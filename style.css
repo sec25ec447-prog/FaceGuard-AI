@@ -1,0 +1,269 @@
+/* =================================
+   FACEGUARD AI - WEBSITE DESIGN
+================================= */
+
+:root {
+    --background: #080d1b;
+    --card: #111b30;
+    --border: #263752;
+    --primary: #61f0c1;
+    --text: #f5f7ff;
+    --muted: #b6c3d9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* Navigation */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 7%;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    color: var(--primary);
+    font-size: 23px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-label {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Hero section */
+
+.hero {
+    text-align: center;
+    padding: 80px 7% 55px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 7px 16px;
+    margin-bottom: 24px;
+    color: var(--primary);
+    border: 1px solid #287b69;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 7vw, 58px);
+    line-height: 1.2;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 28px;
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.primary-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary);
+    color: #08121d;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Image upload card */
+
+.upload-card {
+    width: 86%;
+    max-width: 650px;
+    margin: 25px auto 55px;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.upload-card h2 {
+    margin-bottom: 10px;
+}
+
+.description {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.file-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    background: #0b1426;
+}
+
+#preview {
+    display: none;
+    width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    margin: 15px auto;
+    border-radius: 12px;
+    background: #080d1b;
+}
+
+button {
+    width: 100%;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 9px;
+    background: var(--primary);
+    color: #07121c;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+    opacity: 0.85;
+}
+
+#status {
+    margin-top: 16px;
+    color: var(--primary);
+    overflow-wrap: anywhere;
+}
+
+.notice {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Feature cards */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(210px, 1fr)
+    );
+    gap: 18px;
+    padding: 20px 7% 65px;
+}
+
+.feature-card {
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: var(--card);
+}
+
+.feature-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.feature-card h2 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: var(--muted);
+}
+
+/* About section */
+
+.about {
+    max-width: 850px;
+    margin: 0 auto 60px;
+    padding: 0 7%;
+    text-align: center;
+}
+
+.about h2 {
+    margin-bottom: 12px;
+}
+
+.about p {
+    color: var(--muted);
+}
+
+/* Footer */
+
+footer {
+    padding: 24px 7%;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Mobile responsive design */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .nav-label {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 55px 5% 35px;
+    }
+
+    .upload-card {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .features {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
