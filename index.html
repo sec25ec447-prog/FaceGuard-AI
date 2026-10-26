@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FaceGuard AI | Facial Identity Protection</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: #f4f7ff;
+      line-height: 1.6;
+    }
+    header {
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #26314b;
+    }
+    .logo { color: #63e6be; font-size: 22px; font-weight: bold; }
+    .hero { padding: 65px 7% 45px; text-align: center; }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid #287b69;
+      border-radius: 30px;
+      color: #63e6be;
+      margin-bottom: 20px;
+    }
+    h1 { font-size: clamp(32px, 7vw, 52px); line-height: 1.15; }
+    h1 span { color: #63e6be; }
+    .hero p { max-width: 650px; margin: 20px auto; color: #bdc7dc; }
+    .card {
+      background: #141d32;
+      border: 1px solid #293650;
+      border-radius: 18px;
+      padding: 24px;
+      margin: 20px auto;
+      max-width: 650px;
+    }
+    h2 { margin-bottom: 12px; }
+    input[type="file"] { width: 100%; margin: 18px 0; }
+    button {
+      border: none;
+      background: #63e6be;
+      color: #08121d;
+      font-weight: bold;
+      padding: 13px 20px;
+      border-radius: 9px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    #preview { display: none; max-width: 100%; max-height: 280px; margin: 15px auto; border-radius: 12px; }
+    #status { margin-top: 15px; color: #63e6be; overflow-wrap: anywhere; }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      padding: 20px 7% 55px;
+    }
+    .feature { background: #141d32; border: 1px solid #293650; padding: 22px; border-radius: 14px; }
+    .feature p { color: #bdc7dc; margin-top: 8px; }
+    footer { text-align: center; padding: 25px; border-top: 1px solid #26314b; color: #aebbd1; }
+    .note { font-size: 13px; color: #bdc7dc; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🛡 FaceGuard AI</div>
+    <div>Privacy by Design</div>
+  </header>  <section class="hero">
+    <div class="badge">Consent Before Prompt</div>
+    <h1>Protect Identity.<br><span>Respect Consent.</span></h1>
+    <p>
+      A proposed consent-verification platform designed to help protect
+      facial identity before AI-powered image processing.
+    </p>
+  </section>  <section class="card">
+    <h2>Image Upload Demo</h2>
+    <p>Select an image to preview it locally. This demo does not upload
+       the image to a server or identify anyone.</p>
+    <input type="file" id="imageInput" accept="image/*">
+    <img id="preview" alt="Selected image preview">
+    <button id="checkButton" disabled>Demo: Check Consent Workflow</button>
+    <p id="status" role="status"></p>
+    <p class="note">Prototype only: no facial recognition or real consent request is performed.</p>
+  </section>  <section class="features">
+    <div class="feature">
+      <h2>🔐 Privacy First</h2>
+      <p>Designed around respectful handling of facial images and user consent.</p>
+    </div>
+    <div class="feature">
+      <h2>✅ Consent Workflow</h2>
+      <p>A planned process for requesting permission before image processing.</p>
+    </div>
+    <div class="feature">
+      <h2>🧠 Responsible AI</h2>
+      <p>Encourages transparency and responsible use of AI image tools.</p>
+    </div>
+  </section>  <footer>FaceGuard AI · Prototype under development</footer>  <script>
+    const input = document.getElementById("imageInput");
+    const preview = document.getElementById("preview");
+    const button = document.getElementById("checkButton");
+    const status = document.getElementById("status");
+    let previewUrl = null;
+
+    input.addEventListener("change", () => {
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      const file = input.files[0];
+      status.textContent = "";
+      button.disabled = !file;
+
+      if (!file) {
+        preview.style.display = "none";
+        preview.removeAttribute("src");
+        return;
+      }
+
+      previewUrl = URL.createObjectURL(file);
+      preview.src = previewUrl;
+      preview.style.display = "block";
+    });
+
+    button.addEventListener("click", () => {
+      status.textContent =
+        "Demo only: no face was identified and no consent request was sent.";
+    });
+  </script></body>
+</html>
